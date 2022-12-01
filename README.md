@@ -103,9 +103,9 @@ python -m src.day01.main
 
 ```
 Day 01
-Time part 1: -
-Time part 2: -
-Both parts: -
+Time part 1: 0.277ms
+Time part 2: 0.220ms
+Both parts: 0.497ms
 ```
 
 ```

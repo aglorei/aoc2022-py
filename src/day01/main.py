@@ -1,4 +1,5 @@
 from aocd import get_data
+from ..utils.aoctimer import aoctimer
 
 
 def parse_input(data: str) -> list[int]:
@@ -7,10 +8,12 @@ def parse_input(data: str) -> list[int]:
             for group in groups]
 
 
+@aoctimer
 def part_a(data: str) -> int:
     return max(parse_input(data))
 
 
+@aoctimer
 def part_b(data: str) -> int:
     return sum(sorted(parse_input(data), reverse=True)[:3])
 
