@@ -4,8 +4,7 @@ from ..utils.aoctimer import aoctimer
 
 def parse_input(data: str) -> list[int]:
     groups = data.strip().split("\n\n")
-    return [sum([int(calorie) for calorie in group.split("\n")])
-            for group in groups]
+    return [sum([int(calorie) for calorie in group.split("\n")]) for group in groups]
 
 
 @aoctimer

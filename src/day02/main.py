@@ -7,7 +7,7 @@ def parse_input(data: str) -> list[map]:
 
 
 def letter_to_tuple(letter: str) -> int:
-    return ord(letter) - ord('X' if letter in 'XYZ' else 'A') + 1
+    return ord(letter) - ord("X" if letter in "XYZ" else "A") + 1
 
 
 def play_rps(opponent: int, player: int) -> int:

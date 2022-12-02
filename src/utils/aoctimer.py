@@ -11,4 +11,5 @@ def aoctimer(func):
         finally:
             end = time_ns()
             print(f"Total time: {(end - start)/(10 ** 6)}ms")
+
     return _timeit
