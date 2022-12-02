@@ -2,15 +2,15 @@ from aocd import get_data
 from ..utils.aoctimer import aoctimer
 
 
-def parse_input(data):
+def parse_input(data: str) -> list[map]:
     return [map(letter_to_tuple, game[::2]) for game in data.splitlines()]
 
 
-def letter_to_tuple(letter):
+def letter_to_tuple(letter: str) -> int:
     return ord(letter) - ord('X' if letter in 'XYZ' else 'A') + 1
 
 
-def play_rps(opponent, player):
+def play_rps(opponent: int, player: int) -> int:
     if (opponent % 3) + 1 == player:
         return player + 6
     elif opponent == player:
@@ -20,12 +20,12 @@ def play_rps(opponent, player):
 
 
 @aoctimer
-def part_a(data):
+def part_a(data: str) -> int:
     return sum(play_rps(*game) for game in parse_input(data))
 
 
 @aoctimer
-def part_b(data):
+def part_b(data: str) -> int:
     score = 0
     for opponent, outcome in parse_input(data):
         player = (outcome + opponent) % 3 + 1
