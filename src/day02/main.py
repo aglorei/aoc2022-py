@@ -2,6 +2,10 @@ from aocd import get_data
 from ..utils.aoctimer import aoctimer
 
 
+def parse_input(data):
+    return data.splitlines()
+
+
 def play_rps(opponent, player):
     opponent = ord(opponent) - ord("A") + 1
     player = ord(player) - ord("X") + 1
@@ -11,10 +15,6 @@ def play_rps(opponent, player):
         return player + 3
     else:
         return player
-
-
-def parse_input(data):
-    return data.splitlines()
 
 
 @aoctimer
