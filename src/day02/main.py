@@ -3,12 +3,14 @@ from ..utils.aoctimer import aoctimer
 
 
 def parse_input(data):
-    return data.splitlines()
+    return [map(letter_to_tuple, game[::2]) for game in data.splitlines()]
+
+
+def letter_to_tuple(letter):
+    return ord(letter) - ord('X' if letter in 'XYZ' else 'A') + 1
 
 
 def play_rps(opponent, player):
-    opponent = ord(opponent) - ord("A") + 1
-    player = ord(player) - ord("X") + 1
     if (opponent % 3) + 1 == player:
         return player + 6
     elif opponent == player:
@@ -19,19 +21,20 @@ def play_rps(opponent, player):
 
 @aoctimer
 def part_a(data):
-    rounds = [(round[0], round[-1]) for round in parse_input(data)]
-    return sum(play_rps(*round) for round in rounds)
+    return sum(play_rps(*game) for game in parse_input(data))
 
 
 @aoctimer
 def part_b(data):
-    rounds = []
-    for round in parse_input(data):
-        outcome = ord(round[-1]) - ord("X") - 1
-        modifier = (ord(round[0]) - ord("A") + outcome) % 3
-        player = chr(modifier + ord("X"))
-        rounds.append((round[0], player))
-    return sum(play_rps(*round) for round in rounds)
+    score = 0
+    for opponent, outcome in parse_input(data):
+        player = (outcome + opponent) % 3 + 1
+        outcome = (outcome - 1) * 3
+        score += player + outcome
+    return score
+    # Alternate solution to reuse the play_rps engine
+    # return sum(play_rps(opponent, (outcome + opponent) % 3 + 1)
+    #            for opponent, outcome in parse_input(data))
 
 
 test_data = """\
@@ -39,6 +42,7 @@ A Y
 B X
 C Z
 """
+
 
 if __name__ == "__main__":
     assert part_a(test_data) == 15
