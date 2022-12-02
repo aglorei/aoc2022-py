@@ -103,16 +103,16 @@ python -m src.day01.main
 
 ```
 Day 01
-Time part 1: 0.277ms
-Time part 2: 0.220ms
-Both parts: 0.497ms
+Time part 1: 0.222ms
+Time part 2: 0.231ms
+Both parts: 0.452833ms
 ```
 
 ```
 Day 02
-Time part 1: -
-Time part 2: -
-Both parts: -
+Time part 1: 1.869ms
+Time part 2: 1.008ms
+Both parts: 2.876208ms
 ```
 
 ```
