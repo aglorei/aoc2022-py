@@ -6,7 +6,7 @@ def parse_input(data: str) -> str:
     return data.splitlines()
 
 
-def get_common_item(*rucksacks: list[list[str]]) -> str:
+def get_common_item(*rucksacks: str) -> str:
     rucksack_sets = [set(rucksack) for rucksack in rucksacks]
     return rucksack_sets[0].intersection(*rucksack_sets[1:]).pop()
 
