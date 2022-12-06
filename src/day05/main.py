@@ -35,7 +35,9 @@ def part_a(data: str) -> str:
     parsed_data = parse_input(data)
     for move in parsed_data["moves"]:
         for _ in range(move["quantity"]):
-            parsed_data["crates"][move["to"]].append(parsed_data["crates"][move["from"]].pop())
+            parsed_data["crates"][move["to"]].append(
+                parsed_data["crates"][move["from"]].pop()
+            )
     return "".join([crate.pop() for crate in parsed_data["crates"]])
 
 
