@@ -55,8 +55,7 @@ def part_a(data):
 @aoctimer
 def part_b(data):
     directories = parse_input(data)
-    free_space = 70000000 - directories["/"]["size"]
-    needed_space = 30000000 - free_space
+    needed_space = directories["/"]["size"] - 40000000
     directory_sizes = [directory["size"] for directory in directories.values()]
     directory_sizes.sort()
     for size in directory_sizes:
