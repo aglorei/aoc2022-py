@@ -7,7 +7,7 @@ def parse_input(data: str) -> str:
 
 
 def sign(x: int) -> int:
-    return (x > 0) - (x < 0)
+    return x and (1, -1)[x < 0]
 
 
 compass = {"U": [0, 1], "R": [1, 0], "D": [0, -1], "L": [-1, 0]}
