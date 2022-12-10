@@ -25,6 +25,7 @@ def part_a(data: str) -> int:
 
             register += modifier_stack.pop()
 
+
 @aoctimer
 def part_b(data: str) -> str:
     instructions = parse_input(data)
@@ -37,15 +38,16 @@ def part_b(data: str) -> str:
     for modifier_stack in instructions:
         while modifier_stack:
             column = cycle % 40
-            if (abs(column - register) < 2):
+            if abs(column - register) < 2:
                 row = cycle // 40
                 display[row][column] = "#"
             cycle += 1
             register += modifier_stack.pop()
 
     # TODO: Use OCR to parse lettering
-    print_display = "\n".join([' '.join(line) for line in display])
+    print_display = "\n".join([" ".join(line) for line in display])
     return print_display
+
 
 test_data = """\
 addx 15
@@ -198,13 +200,16 @@ noop
 
 if __name__ == "__main__":
     assert part_a(test_data) == 13140
-    assert part_b(test_data) == """\
+    assert (
+        part_b(test_data)
+        == """\
 # # . . # # . . # # . . # # . . # # . . # # . . # # . . # # . . # # . . # # . .
 # # # . . . # # # . . . # # # . . . # # # . . . # # # . . . # # # . . . # # # .
 # # # # . . . . # # # # . . . . # # # # . . . . # # # # . . . . # # # # . . . .
 # # # # # . . . . . # # # # # . . . . . # # # # # . . . . . # # # # # . . . . .
 # # # # # # . . . . . . # # # # # # . . . . . . # # # # # # . . . . . . # # # #
 # # # # # # # . . . . . . . # # # # # # # . . . . . . . # # # # # # # . . . . ."""
+    )
 
     data = get_data(day=10, year=2022)
     print(part_a(data))
